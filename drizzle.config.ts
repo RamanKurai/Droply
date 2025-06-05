@@ -1,22 +1,34 @@
-import * as dotenv from "dotenv"
-import { defineConfig } from 'drizzle-kit';
+/**
+ * Drizzle Configuration
+ *
+ * This file configures Drizzle ORM to work with our Neon PostgreSQL database.
+ * It's used by the Drizzle CLI for schema migrations and generating SQL.
+ */
 
-dotenv.config({path : ".env.local"})
+import { defineConfig } from "drizzle-kit";
+import * as dotenv from "dotenv";
+
+// Load environment variables from .env.local
+dotenv.config({ path: ".env" });
+
 if (!process.env.DATABASE_URL) {
-    throw new Error("Database url is not set in .env.local")
+  throw new Error("DATABASE_URL is not set in .env");
 }
 
 export default defineConfig({
-  out: './drizzle',
-  schema: './src/db/schema.ts',
-  dialect: 'postgresql',
+  schema: "./lib/db/schema.ts",
+  out: "./drizzle",
+  dialect: "postgresql",
   dbCredentials: {
-    url: process.env.DATABASE_URL!,
+    url: process.env.DATABASE_URL,
   },
-  migrations : {
-    table : "___drizzle_migrations",
-    schema : "public"
+  // Configure migrations table
+  migrations: {
+    table: "__drizzle_migrations",
+    schema: "public",
   },
-  verbose : true,
-  strict : true,
+  // Additional options
+  verbose: true,
+  strict: true,
+  
 });
