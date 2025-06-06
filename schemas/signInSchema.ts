@@ -1,6 +1,6 @@
 import { z } from "zod"
 
-export const SignInSchema  = () => {
+export  const SignInSchema = 
     z.object({
         identifier : z
         .string()
@@ -11,4 +11,3 @@ export const SignInSchema  = () => {
         .min(1 , {message : "Password Should be required"})
         .min(8 , {message : "Password Should be Atleast 8 characters"})
     })
-}

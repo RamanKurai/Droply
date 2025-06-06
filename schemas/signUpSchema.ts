@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const  SignUpSchema = () => {
+export const  SignUpSchema = 
       z.object({
          email : z
          .string()
@@ -18,4 +18,3 @@ export const  SignUpSchema = () => {
         message : "Password Does'nt Match",
         path : ["passwordConfirmation"]
       })
-}
