@@ -30,9 +30,7 @@ export  const files = pgTable("files", {
 
 /* 
 parent  : Each file/folder can have one parent folder
-
 children : Each folder can have many child files/ folder
-
 */
 
 export const fileRealtions = relations(files , ({one , many}) => ({

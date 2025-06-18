@@ -1,7 +1,6 @@
 import { db } from "@/lib/db";
 import { files } from "@/lib/db/schema";
 import { auth } from "@clerk/nextjs/server";
-import { error } from "console";
 import { and, eq } from "drizzle-orm";
 import { NextResponse } from "next/server";
 import {v4 as uuidv4} from "uuid"
@@ -78,7 +77,7 @@ export default async function POST(request: Request) {
     return NextResponse.json({
          success : true,
          message : "Folder Created Successfully",
-         folder : "New Folder"
+         folder : newFolder
     })
 
     } catch (error) {
